@@ -7,18 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED6ADF7A2CCE671900B34EA4 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6ADF792CCE671900B34EA4 /* ButtonStyles.swift */; };
+		ED6ADF7D2CCE7FB300B34EA4 /* MTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6ADF7C2CCE7FB300B34EA4 /* MTextField.swift */; };
+		ED6ADF802CCEC79B00B34EA4 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = ED6ADF7F2CCEC79B00B34EA4 /* Config.xcconfig */; };
+		ED8C1FD42CD16B890092D4C2 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C1FD32CD16B890092D4C2 /* Bundle.swift */; };
 		EDB4F2202CCD587700A959F0 /* MovieFinderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB4F21F2CCD587700A959F0 /* MovieFinderApp.swift */; };
-		EDB4F2222CCD587700A959F0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB4F2212CCD587700A959F0 /* ContentView.swift */; };
+		EDB4F2222CCD587700A959F0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB4F2212CCD587700A959F0 /* HomeView.swift */; };
 		EDB4F2242CCD587900A959F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDB4F2232CCD587900A959F0 /* Assets.xcassets */; };
 		EDB4F2272CCD587900A959F0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDB4F2262CCD587900A959F0 /* Preview Assets.xcassets */; };
+		EDB4F22F2CCD7BDD00A959F0 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB4F22E2CCD7BDD00A959F0 /* Service.swift */; };
+		EDB4F2332CCD7CC200A959F0 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB4F2322CCD7CC200A959F0 /* HomeViewModel.swift */; };
+		EDB4F2362CCD7E6B00A959F0 /* TmdbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB4F2352CCD7E6B00A959F0 /* TmdbManager.swift */; };
+		EDB4F2392CCD7F8700A959F0 /* HomeImageResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB4F2382CCD7F8700A959F0 /* HomeImageResponseModel.swift */; };
+		EDBBEDB02CD25F4700CD34FC /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = EDBBEDAF2CD25F4700CD34FC /* .swiftlint.yml */; };
+		EDBBEDB22CD28AE600CD34FC /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = EDBBEDB12CD28AE600CD34FC /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED6ADF792CCE671900B34EA4 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
+		ED6ADF7B2CCE694900B34EA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		ED6ADF7C2CCE7FB300B34EA4 /* MTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTextField.swift; sourceTree = "<group>"; };
+		ED6ADF7F2CCEC79B00B34EA4 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		ED8C1FD32CD16B890092D4C2 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		EDB4F21C2CCD587700A959F0 /* MovieFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDB4F21F2CCD587700A959F0 /* MovieFinderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieFinderApp.swift; sourceTree = "<group>"; };
-		EDB4F2212CCD587700A959F0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EDB4F2212CCD587700A959F0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		EDB4F2232CCD587900A959F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EDB4F2262CCD587900A959F0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EDB4F22E2CCD7BDD00A959F0 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		EDB4F2322CCD7CC200A959F0 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		EDB4F2352CCD7E6B00A959F0 /* TmdbManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TmdbManager.swift; sourceTree = "<group>"; };
+		EDB4F2382CCD7F8700A959F0 /* HomeImageResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeImageResponseModel.swift; sourceTree = "<group>"; };
+		EDBBEDAF2CD25F4700CD34FC /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		EDBBEDB12CD28AE600CD34FC /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +53,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED6ADF782CCE66FB00B34EA4 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				ED6ADF792CCE671900B34EA4 /* ButtonStyles.swift */,
+				ED6ADF7C2CCE7FB300B34EA4 /* MTextField.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		ED6ADF7E2CCEC74200B34EA4 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				ED6ADF7F2CCEC79B00B34EA4 /* Config.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		ED8C1FD22CD16B6E0092D4C2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				ED8C1FD32CD16B890092D4C2 /* Bundle.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		EDB4F2132CCD587700A959F0 = {
 			isa = PBXGroup;
 			children = (
@@ -51,10 +97,19 @@
 		EDB4F21E2CCD587700A959F0 /* MovieFinder */ = {
 			isa = PBXGroup;
 			children = (
-				EDB4F21F2CCD587700A959F0 /* MovieFinderApp.swift */,
-				EDB4F2212CCD587700A959F0 /* ContentView.swift */,
+				EDBBEDB12CD28AE600CD34FC /* .gitignore */,
+				EDBBEDAF2CD25F4700CD34FC /* .swiftlint.yml */,
 				EDB4F2232CCD587900A959F0 /* Assets.xcassets */,
+				ED6ADF782CCE66FB00B34EA4 /* Components */,
+				ED6ADF7E2CCEC74200B34EA4 /* Config */,
+				ED8C1FD22CD16B6E0092D4C2 /* Extensions */,
+				ED6ADF7B2CCE694900B34EA4 /* Info.plist */,
+				EDB4F2302CCD7C1500A959F0 /* Interfaces */,
+				EDB4F2342CCD7E4800A959F0 /* Managers */,
+				EDB4F2372CCD7F5500A959F0 /* Models */,
+				EDB4F21F2CCD587700A959F0 /* MovieFinderApp.swift */,
 				EDB4F2252CCD587900A959F0 /* Preview Content */,
+				EDB4F22D2CCD7BC700A959F0 /* Service */,
 			);
 			path = MovieFinder;
 			sourceTree = "<group>";
@@ -67,6 +122,47 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		EDB4F22D2CCD7BC700A959F0 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				EDB4F22E2CCD7BDD00A959F0 /* Service.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		EDB4F2302CCD7C1500A959F0 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				EDB4F2312CCD7CB400A959F0 /* Home */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		EDB4F2312CCD7CB400A959F0 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				EDB4F2212CCD587700A959F0 /* HomeView.swift */,
+				EDB4F2322CCD7CC200A959F0 /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		EDB4F2342CCD7E4800A959F0 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				EDB4F2352CCD7E6B00A959F0 /* TmdbManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		EDB4F2372CCD7F5500A959F0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EDB4F2382CCD7F8700A959F0 /* HomeImageResponseModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,6 +173,7 @@
 				EDB4F2182CCD587700A959F0 /* Sources */,
 				EDB4F2192CCD587700A959F0 /* Frameworks */,
 				EDB4F21A2CCD587700A959F0 /* Resources */,
+				EDBBEDAD2CD25D8600CD34FC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -125,20 +222,52 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDBBEDB22CD28AE600CD34FC /* .gitignore in Resources */,
+				EDBBEDB02CD25F4700CD34FC /* .swiftlint.yml in Resources */,
 				EDB4F2272CCD587900A959F0 /* Preview Assets.xcassets in Resources */,
+				ED6ADF802CCEC79B00B34EA4 /* Config.xcconfig in Resources */,
 				EDB4F2242CCD587900A959F0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		EDBBEDAD2CD25D8600CD34FC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EDB4F2182CCD587700A959F0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDB4F2222CCD587700A959F0 /* ContentView.swift in Sources */,
+				EDB4F2222CCD587700A959F0 /* HomeView.swift in Sources */,
+				ED8C1FD42CD16B890092D4C2 /* Bundle.swift in Sources */,
+				ED6ADF7D2CCE7FB300B34EA4 /* MTextField.swift in Sources */,
+				EDB4F2392CCD7F8700A959F0 /* HomeImageResponseModel.swift in Sources */,
+				EDB4F2362CCD7E6B00A959F0 /* TmdbManager.swift in Sources */,
 				EDB4F2202CCD587700A959F0 /* MovieFinderApp.swift in Sources */,
+				ED6ADF7A2CCE671900B34EA4 /* ButtonStyles.swift in Sources */,
+				EDB4F22F2CCD7BDD00A959F0 /* Service.swift in Sources */,
+				EDB4F2332CCD7CC200A959F0 /* HomeViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +276,7 @@
 /* Begin XCBuildConfiguration section */
 		EDB4F2282CCD587900A959F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED6ADF7F2CCEC79B00B34EA4 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -197,7 +327,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -210,6 +340,7 @@
 		};
 		EDB4F2292CCD587900A959F0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED6ADF7F2CCEC79B00B34EA4 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -254,7 +385,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -266,6 +397,7 @@
 		};
 		EDB4F22B2CCD587900A959F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED6ADF7F2CCEC79B00B34EA4 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -274,12 +406,15 @@
 				DEVELOPMENT_ASSET_PATHS = "\"MovieFinder/Preview Content\"";
 				DEVELOPMENT_TEAM = K6C5P3CXYZ;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MovieFinder/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -295,6 +430,7 @@
 		};
 		EDB4F22C2CCD587900A959F0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED6ADF7F2CCEC79B00B34EA4 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -303,12 +439,15 @@
 				DEVELOPMENT_ASSET_PATHS = "\"MovieFinder/Preview Content\"";
 				DEVELOPMENT_TEAM = K6C5P3CXYZ;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MovieFinder/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
