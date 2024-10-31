@@ -29,10 +29,9 @@ class TmdbManager {
         let url = "https://api.themoviedb.org/3/search/multi"
         
         let queryParams: [String: String] = [
-//            "query": text,
-            "query": "Simpson",
+            "query": text,
             "include_adult": "false",
-            "language": "en-US",
+            "language": "fr",
             "page": "1"
         ]
         
@@ -45,5 +44,41 @@ class TmdbManager {
         )
         
         return response.results
+    }
+    
+    func getMovieGenres() async throws -> [Genre] {
+        let url = "https://api.themoviedb.org/3/genre/movie/list"
+        
+        let queryParams: [String: String] = [
+            "language": "en"
+        ]
+        
+        let response = try await NetworkService.shared.request(
+            urlString: url,
+            method: .get,
+            headers: ["Authorization": "Bearer \(Bundle.main.apiKey)"],
+            queryParams: queryParams,
+            responseType: GenreResponseModel.self
+        )
+        
+        return response.genres
+    }
+    
+    func getTvGenres() async throws -> [Genre] {
+        let url = "https://api.themoviedb.org/3/genre/tv/list"
+        
+        let queryParams: [String: String] = [
+            "language": "en"
+        ]
+        
+        let response = try await NetworkService.shared.request(
+            urlString: url,
+            method: .get,
+            headers: ["Authorization": "Bearer \(Bundle.main.apiKey)"],
+            queryParams: queryParams,
+            responseType: GenreResponseModel.self
+        )
+        
+        return response.genres
     }
 }
