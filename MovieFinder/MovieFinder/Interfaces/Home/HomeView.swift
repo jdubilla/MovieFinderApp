@@ -16,9 +16,7 @@ struct HomeView: View {
         in: .common
     ).autoconnect()
     let screenHeight = UIScreen.main.bounds.size.height
-    
-    @State private var searchWorkItem: DispatchWorkItem?
-    
+        
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
@@ -61,14 +59,7 @@ struct HomeView: View {
                 if newValue.isEmpty {
                     vm.resetSuggestions()
                 } else {
-                    searchWorkItem?.cancel()
-                    
-                    let newWorkItem = DispatchWorkItem {
-                        vm.fetchSuggestions()
-                    }
-                    searchWorkItem = newWorkItem
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: newWorkItem)
+                    vm.fetchSuggestionsIfNeeded()
                 }
             }
         }
@@ -113,7 +104,7 @@ extension HomeView {
         if !vm.suggestions.isEmpty {
             ScrollView {
                 ForEach(vm.suggestions, id: \.id) { suggestion in
-                    NavigationLink(destination: MovieOrSerieDetail(mediaId: suggestion.id)) {
+                    NavigationLink(destination: MediaDetailView(media: suggestion)) {
                         HStack(spacing: 0) {
                             SuggestionImageView(suggestion: suggestion)
                             

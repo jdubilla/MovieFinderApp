@@ -81,4 +81,79 @@ class TmdbManager {
         
         return response.genres
     }
+    
+    func getMediaById(media: Result) async throws -> MediaDetailResponseModel {
+        let url: String = {
+            switch media.mediaType {
+            case .tv:
+                return "https://api.themoviedb.org/3/tv/\(media.id)"
+            default:
+                return "https://api.themoviedb.org/3/movie/\(media.id)"
+            }
+        }()
+        
+        let queryParams: [String: String] = [
+            "language": "fr"
+        ]
+        
+        let response = try await NetworkService.shared.request(
+            urlString: url,
+            method: .get,
+            headers: ["Authorization": "Bearer \(Bundle.main.apiKey)"],
+            queryParams: queryParams,
+            responseType: MediaDetailResponseModel.self
+        )
+        
+        return response
+    }
+    
+    func getMediaCreditsById(media: Result) async throws -> MediaCreditsResponseModel {
+        let url: String = {
+            switch media.mediaType {
+            case .tv:
+                return "https://api.themoviedb.org/3/tv/\(media.id)/aggregate_credits"
+            default:
+                return "https://api.themoviedb.org/3/movie/\(media.id)/credits"
+            }
+        }()
+        
+        let queryParams: [String: String] = [
+            "language": "fr"
+        ]
+        
+        let response = try await NetworkService.shared.request(
+            urlString: url,
+            method: .get,
+            headers: ["Authorization": "Bearer \(Bundle.main.apiKey)"],
+            queryParams: queryParams,
+            responseType: MediaCreditsResponseModel.self
+        )
+        
+        return response
+    }
+    
+    func getMediaRecomemndationById(media: Result) async throws -> HomeImageResponseModel {
+        let url: String = {
+            switch media.mediaType {
+            case .tv:
+                return "https://api.themoviedb.org/3/tv/\(media.id)/recommendations"
+            default:
+                return "https://api.themoviedb.org/3/movie/\(media.id)/recommendations"
+            }
+        }()
+        
+        let queryParams: [String: String] = [
+            "language": "fr"
+        ]
+        
+        let response = try await NetworkService.shared.request(
+            urlString: url,
+            method: .get,
+            headers: ["Authorization": "Bearer \(Bundle.main.apiKey)"],
+            queryParams: queryParams,
+            responseType: HomeImageResponseModel.self
+        )
+        
+        return response
+    }
 }

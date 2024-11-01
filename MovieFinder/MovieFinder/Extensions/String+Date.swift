@@ -15,7 +15,6 @@ extension String {
         if let date = dateFormatter.date(from: self) {
             let calendar = Calendar.current
             let year = calendar.component(.year, from: date)
-            print(year)  // Affiche 1989
             return String(year)
         }
         return nil

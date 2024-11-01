@@ -9,13 +9,13 @@ import Foundation
 
 final class HomeViewModel: ObservableObject {
     @Published var imageToShow: String?
-//    @Published var text = "Les simpso"
-    @Published var text = "La casa de pap"
+    @Published var text = ""
     @Published var genres: [Genre] = []
     @Published var suggestions: [Result] = []
     @Published var animateTextField = false
     @Published private var bgImagesHome: [String] = []
     @Published private var index = 11
+    @Published private var searchWorkItem: DispatchWorkItem?
     
     let baseUrlBackdropImage = "https://image.tmdb.org/t/p/original/"
     
@@ -43,7 +43,6 @@ final class HomeViewModel: ObservableObject {
                 let movieGenres = try await TmdbManager.shared.getMovieGenres()
                 let tvGenres = try await TmdbManager.shared.getTvGenres()
                 genres = movieGenres + tvGenres
-                print("genres: \(genres)")
             } catch {
                 print("Error")
             }
@@ -61,8 +60,27 @@ final class HomeViewModel: ObservableObject {
         (oldValue.isEmpty && !newValue.isEmpty) ||
             (!oldValue.isEmpty && newValue.isEmpty)
     }
+        
+    func fetchSuggestionsIfNeeded() {
+        searchWorkItem?.cancel()
+        
+        let newWorkItem = DispatchWorkItem {
+            self.fetchSuggestions()
+        }
+        searchWorkItem = newWorkItem
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: newWorkItem)
+    }
     
-    func fetchSuggestions() {
+    func getGenreById(id: Int) -> String {
+        genres.first { $0.id == id }?.name ?? ""
+    }
+    
+    func resetSuggestions() {
+        suggestions = []
+    }
+    
+    private func fetchSuggestions() {
         Task { @MainActor in
             do {
                 let response = try await TmdbManager.shared.getSuggestions(text: text)
@@ -72,14 +90,6 @@ final class HomeViewModel: ObservableObject {
                 print("Error")
             }
         }
-    }
-    
-    func getGenreById(id: Int) -> String {
-        genres.first { $0.id == id }?.name ?? ""
-    }
-    
-    func resetSuggestions() {
-        suggestions = []
     }
 
     private func incrementIndex() {
