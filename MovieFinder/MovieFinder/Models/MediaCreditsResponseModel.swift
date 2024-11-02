@@ -30,7 +30,20 @@ struct Cast: Codable {
 
 enum KnownForDepartment: String, Codable {
     case acting = "Acting"
+    case art = "Art"
+    case camera = "Camera"
+    case costumeMakeUp = "Costume & Make-Up"
     case creator = "Creator"
     case directing = "Directing"
+    case editing = "Editing"
+    case production = "Production"
+    case sound = "Sound"
     case writing = "Writing"
+    case unknown = "Unknown"
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        let value = try? container.decode(String.self)
+        self = KnownForDepartment(rawValue: value ?? "") ?? .unknown
+    }
 }

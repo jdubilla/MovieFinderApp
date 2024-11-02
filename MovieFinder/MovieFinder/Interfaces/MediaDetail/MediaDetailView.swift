@@ -16,13 +16,13 @@ struct MediaDetailView: View {
     @State private var showingSafariView = false
     @State var url: URL?
     @State private var isPresentWebView = false
+    @State var opacity: CGFloat = 1
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack(spacing: 0) {
             if let detailMedia = vm.media {
                 MediaView(detailMedia: detailMedia)
-            } else {
-                LoadingView()
             }
         }
         .ignoresSafeArea()
@@ -57,9 +57,16 @@ extension MediaDetailView {
                 GeometryReader { geo in
                     let scrollOffset = geo.frame(in: .global).minY
                     let darkenAmount = min(0.6, max(0, (300 - scrollOffset) / 300))
+                    let opacityBis = max(0, min(1, scrollOffset / 200))
                     Color.clear
+                        .onAppear {
+                            vm.imageOpacity = darkenAmount
+                        }
                         .onChange(of: darkenAmount) { newValue in
                             vm.imageOpacity = newValue
+                        }
+                        .onChange(of: opacityBis) { newValue in
+                            opacity = newValue
                         }
                 }
                 
@@ -79,8 +86,29 @@ extension MediaDetailView {
             .padding(.bottom, 32)
         }
         .background {
+            ZStack {
+                VStack {
+                    HeaderImageView()
+                    
+                    Spacer()
+                }
+            }
+        }
+        .overlay {
             VStack {
-                HeaderImageView()
+                HStack {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "chevron.backward")
+                    }
+                    .buttonStyle(.roundedIcon())
+                    .opacity(opacity)
+                    
+                    Spacer()
+                }
+                .padding(.top, 48)
+                .padding(.leading, 16)
                 
                 Spacer()
             }
@@ -232,14 +260,16 @@ extension MediaDetailView {
                 .font(.body)
                 .padding(.top)
             
-            Button {
-                url = URL(string: detailMedia.homepage)
-                showingSafariView = true
-            } label: {
-                Text("Voir plus")
-                    .foregroundStyle(.borderGreen)
-                    .fontWeight(.bold)
-                    .underline()
+            if let homepage = URL(string: detailMedia.homepage) {
+                Button {
+                    url = homepage
+                    showingSafariView = true
+                } label: {
+                    Text("Voir plus")
+                        .foregroundStyle(.borderGreen)
+                        .fontWeight(.bold)
+                        .underline()
+                }
             }
         }
         .padding(.horizontal)
@@ -422,16 +452,13 @@ extension MediaDetailView {
     MediaDetailView(
         media: Result(
             backdropPath: "/mDt3Gkep3L0L5aL5Ck5hj8e3Rf.jpg",
-//            id: 132719,
-//            id: 71446,
-            
-            id: 689249,
+            id: 211684,
             posterPath: "The Batman",
             name: "The Batman",
             title: "The Batman",
             originalTitle: "The Batman",
             originalName: "The Batman",
-            mediaType: .movie,
+            mediaType: .tv,
             genreIds: [99],
             releaseDate: "2022-03-02",
             voteAverage: 6.0,

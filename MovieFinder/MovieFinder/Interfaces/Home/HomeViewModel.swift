@@ -14,7 +14,7 @@ final class HomeViewModel: ObservableObject {
     @Published var suggestions: [Result] = []
     @Published var animateTextField = false
     @Published private var bgImagesHome: [String] = []
-    @Published private var index = 11
+    @Published private var index = 0
     @Published private var searchWorkItem: DispatchWorkItem?
     
     let baseUrlBackdropImage = "https://image.tmdb.org/t/p/original/"
@@ -52,7 +52,7 @@ final class HomeViewModel: ObservableObject {
     func updateImage() {
         guard !bgImagesHome.isEmpty else { return }
         
-//        incrementIndex()
+        incrementIndex()
         imageToShow = baseUrlBackdropImage + bgImagesHome[index]
     }
     

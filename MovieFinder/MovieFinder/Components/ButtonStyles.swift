@@ -45,3 +45,48 @@ struct GradientBorderButtonStyle: ButtonStyle {
     }
     .padding()
 }
+
+// MARK: Rounded Icon buttons
+extension ButtonStyle where Self == RoundedIconButtonStyle {
+    static func roundedIcon(
+        background: Color = .backgroundGray.opacity(0.5),
+        foreground: Color = .white
+    ) -> Self {
+        Self(
+            background: background,
+            foreground: foreground
+        )
+    }
+}
+
+struct RoundedIconButtonStyle: ButtonStyle {
+    let background: Color
+    let foreground: Color
+
+    @Environment(\.isEnabled) var isEnabled
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .frame(width: 48, height: 48)
+            .background(isEnabled ? background : .clear)
+            .foregroundStyle(isEnabled ? foreground : .red)
+            .clipShape(.rect(cornerRadius: 16))
+    }
+}
+
+@available(iOS 17, *)
+#Preview("Rounded Icon buttons", traits: .sizeThatFitsLayout) {
+    VStack {
+        Button {} label: {
+            Image(systemName: "chevron.backward")
+        }
+        .buttonStyle(.roundedIcon())
+        
+        Button {} label: {
+            Image(systemName: "chevron.backward")
+        }
+        .buttonStyle(.roundedIcon())
+        .disabled(true)
+    }
+    .padding()
+}
