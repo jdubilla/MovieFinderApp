@@ -12,10 +12,8 @@ class TmdbManager {
     static let shared = TmdbManager()
     
     func getHomeImages() async throws -> [String] {
-        let url = "https://api.themoviedb.org/3/trending/all/day"
-        
         let response = try await NetworkService.shared.request(
-            urlString: url,
+            urlString: Const.Url.homeImages,
             method: .get,
             headers: ["Authorization": "Bearer \(Bundle.main.apiKey)"],
             responseType: HomeImageResponseModel.self
@@ -26,17 +24,15 @@ class TmdbManager {
     }
     
     func getSuggestions(text: String) async throws -> [Result] {
-        let url = "https://api.themoviedb.org/3/search/multi"
-        
         let queryParams: [String: String] = [
             "query": text,
             "include_adult": "false",
-            "language": "fr",
+            "language": "fr-FR",
             "page": "1"
         ]
         
         let response = try await NetworkService.shared.request(
-            urlString: url,
+            urlString: Const.Url.suggestions,
             method: .get,
             headers: ["Authorization": "Bearer \(Bundle.main.apiKey)"],
             queryParams: queryParams,
@@ -47,14 +43,12 @@ class TmdbManager {
     }
     
     func getMovieGenres() async throws -> [Genre] {
-        let url = "https://api.themoviedb.org/3/genre/movie/list"
-        
         let queryParams: [String: String] = [
-            "language": "en"
+            "language": "fr-FR"
         ]
         
         let response = try await NetworkService.shared.request(
-            urlString: url,
+            urlString: Const.Url.movieGenres,
             method: .get,
             headers: ["Authorization": "Bearer \(Bundle.main.apiKey)"],
             queryParams: queryParams,
@@ -65,14 +59,12 @@ class TmdbManager {
     }
     
     func getTvGenres() async throws -> [Genre] {
-        let url = "https://api.themoviedb.org/3/genre/tv/list"
-        
         let queryParams: [String: String] = [
-            "language": "en"
+            "language": "fr-FR"
         ]
         
         let response = try await NetworkService.shared.request(
-            urlString: url,
+            urlString: Const.Url.tvGenres,
             method: .get,
             headers: ["Authorization": "Bearer \(Bundle.main.apiKey)"],
             queryParams: queryParams,
@@ -83,77 +75,50 @@ class TmdbManager {
     }
     
     func getMediaById(media: Result) async throws -> MediaDetailResponseModel {
-        let url: String = {
-            switch media.mediaType {
-            case .tv:
-                return "https://api.themoviedb.org/3/tv/\(media.id)"
-            default:
-                return "https://api.themoviedb.org/3/movie/\(media.id)"
-            }
-        }()
+        let url = Const.Url.mediaById(mediaType: media.mediaType, id: media.id)
         
         let queryParams: [String: String] = [
-            "language": "fr"
+            "language": "fr-FR"
         ]
         
-        let response = try await NetworkService.shared.request(
+        return try await NetworkService.shared.request(
             urlString: url,
             method: .get,
             headers: ["Authorization": "Bearer \(Bundle.main.apiKey)"],
             queryParams: queryParams,
             responseType: MediaDetailResponseModel.self
         )
-        
-        return response
     }
     
     func getMediaCreditsById(media: Result) async throws -> MediaCreditsResponseModel {
-        let url: String = {
-            switch media.mediaType {
-            case .tv:
-                return "https://api.themoviedb.org/3/tv/\(media.id)/aggregate_credits"
-            default:
-                return "https://api.themoviedb.org/3/movie/\(media.id)/credits"
-            }
-        }()
+        let url = Const.Url.mediaCredits(mediaType: media.mediaType, id: media.id)
         
         let queryParams: [String: String] = [
-            "language": "fr"
+            "language": "fr-FR"
         ]
         
-        let response = try await NetworkService.shared.request(
+        return try await NetworkService.shared.request(
             urlString: url,
             method: .get,
             headers: ["Authorization": "Bearer \(Bundle.main.apiKey)"],
             queryParams: queryParams,
             responseType: MediaCreditsResponseModel.self
         )
-        
-        return response
     }
     
     func getMediaRecomemndationById(media: Result) async throws -> HomeImageResponseModel {
-        let url: String = {
-            switch media.mediaType {
-            case .tv:
-                return "https://api.themoviedb.org/3/tv/\(media.id)/recommendations"
-            default:
-                return "https://api.themoviedb.org/3/movie/\(media.id)/recommendations"
-            }
-        }()
+        let url = Const.Url.mediaRecommendations(mediaType: media.mediaType, id: media.id)
         
         let queryParams: [String: String] = [
-            "language": "fr"
+            "language": "fr-FR"
         ]
         
-        let response = try await NetworkService.shared.request(
+        return try await NetworkService.shared.request(
             urlString: url,
             method: .get,
             headers: ["Authorization": "Bearer \(Bundle.main.apiKey)"],
             queryParams: queryParams,
             responseType: HomeImageResponseModel.self
         )
-        
-        return response
     }
 }

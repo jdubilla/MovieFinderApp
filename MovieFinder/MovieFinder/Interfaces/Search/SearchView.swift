@@ -1,5 +1,5 @@
 //
-//  HomeView.swift
+//  SearchView.swift
 //  MovieFinder
 //
 //  Created by Jean-baptiste DUBILLARD on 26/10/2024.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct HomeView: View {
+struct SearchView: View {
     
-    @StateObject var vm = HomeViewModel()
+    @StateObject var vm = SearchViewModel()
     private let timer = Timer.publish(
         every: 3.5,
         on: .main,
@@ -67,10 +67,10 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    SearchView()
 }
 
-extension HomeView {
+extension SearchView {
     // MARK: BackgroundImageView
     @ViewBuilder
     private func BackgroundImageView() -> some View {
@@ -111,7 +111,7 @@ extension HomeView {
                             VStack(alignment: .leading, spacing: 4) {
                                 SuggestionNameAndGenreView(suggestion: suggestion)
                                 
-                                SuggestionVoteAverageView(suggestion: suggestion)
+                                SuggestionVoteAverageAndYearView(suggestion: suggestion)
                                 
                                 Spacer()
                             }
@@ -169,15 +169,16 @@ extension HomeView {
                 ForEach(genres, id: \.self) { genre in
                     Text(vm.getGenreById(id: genre))
                         .font(.subheadline)
+                        .lineLimit(1)
                 }
             }
             .padding(.leading)
         }
     }
     
-    // MARK: SuggestionVoteAverageView
+    // MARK: SuggestionVoteAverageAndYearView
     @ViewBuilder
-    private func SuggestionVoteAverageView(suggestion: Result) -> some View {
+    private func SuggestionVoteAverageAndYearView(suggestion: Result) -> some View {
         HStack(spacing: 8) {
             if let voteAverage = suggestion.voteAverage {
                 HStack(spacing: 8) {

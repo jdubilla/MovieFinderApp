@@ -19,10 +19,14 @@ struct MediaDetailView: View {
     @State var opacity: CGFloat = 1
     @Environment(\.dismiss) var dismiss
     
+    @StateObject private var itemsManager = FavoritesMediaManager.shared
+    
     var body: some View {
         VStack(spacing: 0) {
             if let detailMedia = vm.media {
                 MediaView(detailMedia: detailMedia)
+            } else {
+                LoadingView()
             }
         }
         .ignoresSafeArea()
@@ -86,12 +90,10 @@ extension MediaDetailView {
             .padding(.bottom, 32)
         }
         .background {
-            ZStack {
-                VStack {
-                    HeaderImageView()
-                    
-                    Spacer()
-                }
+            VStack {
+                HeaderImageView()
+                
+                Spacer()
             }
         }
         .overlay {
@@ -106,9 +108,23 @@ extension MediaDetailView {
                     .opacity(opacity)
                     
                     Spacer()
+                    
+                    Button {
+                        if itemsManager.items.contains { $0.id == media.id } {
+                            itemsManager.items.removeAll { $0.id == media.id }
+                        } else {
+                            let newItem = FavoriteMedia(id: media.id, mediaType: media.mediaType.rawValue)
+                            itemsManager.items.append(newItem)
+                            itemsManager.saveItems()
+                        }
+                    } label: {
+                        Image(systemName: FavoritesMediaManager.shared.items.contains { $0.id == media.id } ? "heart.fill" : "heart")
+                    }
+                    .buttonStyle(.roundedIcon())
+                    .opacity(opacity)
                 }
                 .padding(.top, 48)
-                .padding(.leading, 16)
+                .padding(.horizontal, 16)
                 
                 Spacer()
             }
@@ -280,7 +296,7 @@ extension MediaDetailView {
     private func CreditsView(detailMedia: MediaDetailResponseModel) -> some View {
         if let credits = vm.credits {
             ScrollView(.horizontal) {
-                HStack {
+                LazyHStack {
                     ForEach(credits.cast, id: \.id) { cast in
                         ZStack(alignment: .leading) {
                             CreditNameAndDepartmentView(cast: cast)
@@ -408,7 +424,7 @@ extension MediaDetailView {
             
             if let recommendations = vm.recommendations?.results {
                 ScrollView(.horizontal) {
-                    HStack(alignment: .top, spacing: 16) {
+                    LazyHStack(alignment: .top, spacing: 16) {
                         ForEach(recommendations, id: \.id) { recommendation in
                             NavigationLink(destination: MediaDetailView(media: recommendation)) {
                                 VStack(spacing: 8) {
@@ -439,6 +455,7 @@ extension MediaDetailView {
                             }
                         }
                     }
+                    .frame(height: 275)
                     .padding(.horizontal)
                     .padding(.bottom)
                 }

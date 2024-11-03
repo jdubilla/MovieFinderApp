@@ -1,5 +1,5 @@
 //
-//  HomeViewModel.swift
+//  SearchViewModel.swift
 //  MovieFinder
 //
 //  Created by Jean-baptiste DUBILLARD on 26/10/2024.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class HomeViewModel: ObservableObject {
+final class SearchViewModel: ObservableObject {
     @Published var imageToShow: String?
     @Published var text = ""
     @Published var genres: [Genre] = []
