@@ -105,19 +105,7 @@ extension SearchView {
             ScrollView {
                 ForEach(vm.suggestions, id: \.id) { suggestion in
                     NavigationLink(destination: MediaDetailView(media: suggestion)) {
-                        HStack(spacing: 0) {
-                            SuggestionImageView(suggestion: suggestion)
-                            
-                            VStack(alignment: .leading, spacing: 4) {
-                                SuggestionNameAndGenreView(suggestion: suggestion)
-                                
-                                SuggestionVoteAverageAndYearView(suggestion: suggestion)
-                                
-                                Spacer()
-                            }
-                            
-                            Spacer()
-                        }
+                        MediaListElementView(media: suggestion)
                     }
                 }
                 .padding(24)
@@ -130,79 +118,5 @@ extension SearchView {
             .padding(.top)
             .foregroundStyle(.white)
         }
-    }
-    
-    // MARK: SuggestionImageView
-    @ViewBuilder
-    private func SuggestionImageView(suggestion: Result) -> some View {
-        AsyncImage(
-            url: URL(string: vm.baseUrlBackdropImage + (suggestion.posterPath ?? "")),
-            transaction: Transaction(animation: .default)
-        ) { phase in
-            switch phase {
-            case .empty:
-                EmptyView()
-            case .success(let image):
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 125)
-            case .failure:
-                EmptyView()
-            @unknown default:
-                EmptyView()
-            }
-        }
-    }
-    
-    // MARK: SuggestionNameAndGenreView
-    @ViewBuilder
-    private func SuggestionNameAndGenreView(suggestion: Result) -> some View {
-        Text(suggestion.nameOrTitle)
-            .font(.headline)
-            .fontWeight(.bold)
-            .padding(.leading)
-            .multilineTextAlignment(.leading)
-        
-        if let genres = suggestion.genreIds {
-            HStack(spacing: 4) {
-                ForEach(genres, id: \.self) { genre in
-                    Text(vm.getGenreById(id: genre))
-                        .font(.subheadline)
-                        .lineLimit(1)
-                }
-            }
-            .padding(.leading)
-        }
-    }
-    
-    // MARK: SuggestionVoteAverageAndYearView
-    @ViewBuilder
-    private func SuggestionVoteAverageAndYearView(suggestion: Result) -> some View {
-        HStack(spacing: 8) {
-            if let voteAverage = suggestion.voteAverage {
-                HStack(spacing: 8) {
-                    Image(systemName: "star.fill")
-                        .foregroundColor(.yellow)
-                    
-                    Text("\(String(format: "%.2f", voteAverage))")
-                        .font(.subheadline)
-                }
-                .capsuleBackground()
-                .padding(.leading)
-            }
-            
-            if let year = suggestion.date.getYear() {
-                HStack(spacing: 8) {
-                    Image(systemName: "calendar")
-                    
-                    Text(year)
-                        .font(.subheadline)
-                }
-                .capsuleBackground()
-            }
-            
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
     }
 }

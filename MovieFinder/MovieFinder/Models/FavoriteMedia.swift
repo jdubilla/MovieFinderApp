@@ -9,5 +9,5 @@ import Foundation
 
 struct FavoriteMedia: Codable {
     let id: Int
-    let mediaType: String
+    let mediaType: MediaType
 }

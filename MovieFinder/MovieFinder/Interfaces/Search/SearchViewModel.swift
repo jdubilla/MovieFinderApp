@@ -11,7 +11,7 @@ final class SearchViewModel: ObservableObject {
     @Published var imageToShow: String?
     @Published var text = ""
     @Published var genres: [Genre] = []
-    @Published var suggestions: [Result] = []
+    @Published var suggestions: [MediaDetailResponseModel] = []
     @Published var animateTextField = false
     @Published private var bgImagesHome: [String] = []
     @Published private var index = 0
@@ -40,9 +40,8 @@ final class SearchViewModel: ObservableObject {
     func fetchGenres() {
         Task { @MainActor in
             do {
-                let movieGenres = try await TmdbManager.shared.getMovieGenres()
-                let tvGenres = try await TmdbManager.shared.getTvGenres()
-                genres = movieGenres + tvGenres
+                let response = try await TmdbManager.shared.getGenres()
+                genres = response
             } catch {
                 print("Error")
             }

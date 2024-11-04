@@ -14,6 +14,9 @@ class FavoritesMediaManager: ObservableObject {
     
     init() {
         loadItems()
+        items = [
+            FavoriteMedia(id: 211684, mediaType: .tv)
+        ]
     }
     
     func loadItems() {

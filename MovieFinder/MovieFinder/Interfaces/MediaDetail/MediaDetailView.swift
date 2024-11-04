@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MediaDetailView: View {
     
-    let media: Result
+    let media: MediaDetailResponseModel
     @StateObject private var vm = MediaDetailViewModel()
     let screenWidth = UIScreen.main.bounds.size.width
     
@@ -113,7 +113,7 @@ extension MediaDetailView {
                         if itemsManager.items.contains { $0.id == media.id } {
                             itemsManager.items.removeAll { $0.id == media.id }
                         } else {
-                            let newItem = FavoriteMedia(id: media.id, mediaType: media.mediaType.rawValue)
+                            let newItem = FavoriteMedia(id: media.id, mediaType: media.typeMedia)
                             itemsManager.items.append(newItem)
                             itemsManager.saveItems()
                         }
@@ -181,26 +181,28 @@ extension MediaDetailView {
             
             Spacer()
             
-            VStack(spacing: 4) {
-                HStack(spacing: 4) {
-                    ForEach(1...5, id: \.self) { idx in
-                        Image(systemName: vm.getImageStarRating(idx: idx, voteAverage: detailMedia.voteAverage))
-                            .resizable()
-                            .frame(width: 15, height: 15)
-                            .foregroundStyle(
-                                vm.getForegroundColorStarRating(
-                                    idx: idx,
-                                    voteAverage: detailMedia.voteAverage
+            if let voteAverage = detailMedia.voteAverage, let voteCount = detailMedia.voteCount {
+                VStack(spacing: 4) {
+                    HStack(spacing: 4) {
+                        ForEach(1...5, id: \.self) { idx in
+                            Image(systemName: vm.getImageStarRating(idx: idx, voteAverage: voteAverage))
+                                .resizable()
+                                .frame(width: 15, height: 15)
+                                .foregroundStyle(
+                                    vm.getForegroundColorStarRating(
+                                        idx: idx,
+                                        voteAverage: voteAverage
+                                    )
                                 )
-                            )
+                        }
                     }
+                    
+                    Text("\(voteCount) votants")
+                        .font(.footnote)
+                        .foregroundStyle(.gray)
                 }
-                
-                Text("\(detailMedia.voteCount) votants")
-                    .font(.footnote)
-                    .foregroundStyle(.gray)
+                .padding(.top, 8)
             }
-            .padding(.top, 8)
         }
         .padding(.horizontal)
     }
@@ -237,58 +239,62 @@ extension MediaDetailView {
     // MARK: GenresView
     @ViewBuilder
     private func GenresView(detailMedia: MediaDetailResponseModel) -> some View {
-        ScrollView(.horizontal) {
-            HStack {
-                ForEach(detailMedia.genres, id: \.id) { genre in
-                    Text(genre.name)
-                        .font(.subheadline)
-                        .foregroundStyle(.gray)
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 4)
-                        .overlay(
-                            Capsule()
-                                .strokeBorder(
-                                    LinearGradient(
-                                        gradient: Gradient(
-                                            colors: [
-                                                .borderGreen,
-                                                .borderPurple
-                                            ]
+        if let genres = detailMedia.genres {
+            ScrollView(.horizontal) {
+                HStack {
+                    ForEach(genres, id: \.id) { genre in
+                        Text(genre.name)
+                            .font(.subheadline)
+                            .foregroundStyle(.gray)
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
+                            .overlay(
+                                Capsule()
+                                    .strokeBorder(
+                                        LinearGradient(
+                                            gradient: Gradient(
+                                                colors: [
+                                                    .borderGreen,
+                                                    .borderPurple
+                                                ]
+                                            ),
+                                            startPoint: .leading,
+                                            endPoint: .trailing
                                         ),
-                                        startPoint: .leading,
-                                        endPoint: .trailing
-                                    ),
-                                    lineWidth: 2
-                                )
-                        )
+                                        lineWidth: 2
+                                    )
+                            )
+                    }
                 }
+                .padding(.top, 8)
+                .padding(.horizontal)
             }
-            .padding(.top, 8)
-            .padding(.horizontal)
         }
     }
     
     // MARK: DescriptionView
     @ViewBuilder
     private func DescriptionView(detailMedia: MediaDetailResponseModel) -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text(detailMedia.overview)
-                .font(.body)
-                .padding(.top)
-            
-            if let homepage = URL(string: detailMedia.homepage) {
-                Button {
-                    url = homepage
-                    showingSafariView = true
-                } label: {
-                    Text("Voir plus")
-                        .foregroundStyle(.borderGreen)
-                        .fontWeight(.bold)
-                        .underline()
+        if let overview = detailMedia.overview {
+            VStack(alignment: .leading, spacing: 8) {
+                Text(overview)
+                    .font(.body)
+                    .padding(.top)
+                
+                if let homepage = detailMedia.homepage, let urlHomePage = URL(string: homepage) {
+                    Button {
+                        url = urlHomePage
+                        showingSafariView = true
+                    } label: {
+                        Text("Voir plus")
+                            .foregroundStyle(.borderGreen)
+                            .fontWeight(.bold)
+                            .underline()
+                    }
                 }
             }
+            .padding(.horizontal)
         }
-        .padding(.horizontal)
     }
     
     // MARK: CreditsView
@@ -467,19 +473,23 @@ extension MediaDetailView {
 
 #Preview {
     MediaDetailView(
-        media: Result(
-            backdropPath: "/mDt3Gkep3L0L5aL5Ck5hj8e3Rf.jpg",
-            id: 211684,
-            posterPath: "The Batman",
-            name: "The Batman",
-            title: "The Batman",
-            originalTitle: "The Batman",
-            originalName: "The Batman",
-            mediaType: .tv,
-            genreIds: [99],
+        media: MediaDetailResponseModel(
+            backdropPath: "/c1r23hXbH2AYFpFI8KDCq852WhG.jpg",
+            firstAirDate: "2022-03-02",
             releaseDate: "2022-03-02",
+            genres: [],
+            genreIds: [99],
+            homepage: nil,
+            id: 211684,
+            numberOfEpisodes: nil,
+            numberOfSeasons: nil,
+            originalName: "The Batman",
+            originalTitle: "The Batman",
+            overview: "In his second year of fighting crime, Batman uncovers corruption in Gotham City that connects to his own family while facing a serial killer known as the Riddler.",
+            posterPath: "/c1r23hXbH2AYFpFI8KDCq852WhG.jpg",
             voteAverage: 6.0,
-            firstAirDate: "2022-03-02"
+            voteCount: 0,
+            mediaType: .tv
         )
     )
 }

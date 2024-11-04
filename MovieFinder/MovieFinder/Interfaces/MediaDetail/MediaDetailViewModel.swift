@@ -18,23 +18,26 @@ final class MediaDetailViewModel: ObservableObject {
     
     let baseUrlBackdropImage = "https://image.tmdb.org/t/p/original/"
     
-    func fetchDatas(media: Result) {
+    func fetchDatas(media: MediaDetailResponseModel) {
         fetchMediaById(media: media)
         fetchCredits(media: media)
         fetchRecommendations(media: media)
     }
     
-    func fetchMediaById(media: Result) {
+    func fetchMediaById(media: MediaDetailResponseModel) {
         Task { @MainActor in
             do {
-                self.media = try await TmdbManager.shared.getMediaById(media: media)
+                self.media = try await TmdbManager.shared.getMediaById(
+                    mediaType: media.typeMedia,
+                    id: media.id
+                )
             } catch {
                 print(error)
             }
         }
     }
     
-    func fetchCredits(media: Result) {
+    func fetchCredits(media: MediaDetailResponseModel) {
         Task { @MainActor in
             do {
                 credits = try await TmdbManager.shared.getMediaCreditsById(media: media)
@@ -44,7 +47,7 @@ final class MediaDetailViewModel: ObservableObject {
         }
     }
     
-    func fetchRecommendations(media: Result) {
+    func fetchRecommendations(media: MediaDetailResponseModel) {
         Task { @MainActor in
             do {
                 recommendations = try await TmdbManager.shared.getMediaRecomemndationById(media: media)

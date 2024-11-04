@@ -17,7 +17,9 @@
 		ED4DE0792CD444B100E94C24 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4DE0782CD444B100E94C24 /* SafariView.swift */; };
 		ED6ADF7A2CCE671900B34EA4 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6ADF792CCE671900B34EA4 /* ButtonStyles.swift */; };
 		ED6ADF7D2CCE7FB300B34EA4 /* MTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6ADF7C2CCE7FB300B34EA4 /* MTextField.swift */; };
-		ED6ADF802CCEC79B00B34EA4 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = ED6ADF7F2CCEC79B00B34EA4 /* Config.xcconfig */; };
+		ED7769BA2CD8F538003D0FF9 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = ED7769B92CD8F538003D0FF9 /* Config.xcconfig */; };
+		ED7769BC2CD8F8A5003D0FF9 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7769BB2CD8F8A5003D0FF9 /* FavoritesViewModel.swift */; };
+		ED7769BE2CD8FEB8003D0FF9 /* MediaListElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7769BD2CD8FEB8003D0FF9 /* MediaListElementView.swift */; };
 		ED8C1FD42CD16B890092D4C2 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C1FD32CD16B890092D4C2 /* Bundle.swift */; };
 		ED9A3D9E2CD5926E002B5F01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9A3D9D2CD5926E002B5F01 /* LaunchScreen.storyboard */; };
 		EDA982682CD5220900366E81 /* MediaCreditsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA982672CD5220900366E81 /* MediaCreditsResponseModel.swift */; };
@@ -49,7 +51,9 @@
 		ED6ADF792CCE671900B34EA4 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		ED6ADF7B2CCE694900B34EA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		ED6ADF7C2CCE7FB300B34EA4 /* MTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTextField.swift; sourceTree = "<group>"; };
-		ED6ADF7F2CCEC79B00B34EA4 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		ED7769B92CD8F538003D0FF9 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		ED7769BB2CD8F8A5003D0FF9 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		ED7769BD2CD8FEB8003D0FF9 /* MediaListElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaListElementView.swift; sourceTree = "<group>"; };
 		ED8C1FD32CD16B890092D4C2 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		ED9A3D9D2CD5926E002B5F01 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EDA982672CD5220900366E81 /* MediaCreditsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCreditsResponseModel.swift; sourceTree = "<group>"; };
@@ -89,12 +93,13 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
-		ED0A98732CD7B9270035AAAE /* FavoritesView */ = {
+		ED0A98732CD7B9270035AAAE /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
 				ED0A98762CD7B94F0035AAAE /* FavoritesView.swift */,
+				ED7769BB2CD8F8A5003D0FF9 /* FavoritesViewModel.swift */,
 			);
-			path = FavoritesView;
+			path = Favorites;
 			sourceTree = "<group>";
 		};
 		ED4DE0702CD3B29000E94C24 /* MediaDetail */ = {
@@ -119,14 +124,15 @@
 			children = (
 				ED6ADF792CCE671900B34EA4 /* ButtonStyles.swift */,
 				ED6ADF7C2CCE7FB300B34EA4 /* MTextField.swift */,
+				ED7769BD2CD8FEB8003D0FF9 /* MediaListElementView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
 		};
-		ED6ADF7E2CCEC74200B34EA4 /* Config */ = {
+		ED7769B82CD8F511003D0FF9 /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				ED6ADF7F2CCEC79B00B34EA4 /* Config.xcconfig */,
+				ED7769B92CD8F538003D0FF9 /* Config.xcconfig */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -164,7 +170,7 @@
 				EDBBEDAF2CD25F4700CD34FC /* .swiftlint.yml */,
 				EDB4F2232CCD587900A959F0 /* Assets.xcassets */,
 				ED6ADF782CCE66FB00B34EA4 /* Components */,
-				ED6ADF7E2CCEC74200B34EA4 /* Config */,
+				ED7769B82CD8F511003D0FF9 /* Config */,
 				EDFA1FD92CD6D8BC00F74553 /* Consts */,
 				ED8C1FD22CD16B6E0092D4C2 /* Extensions */,
 				ED4DE0772CD4448E00E94C24 /* Helpers */,
@@ -199,7 +205,7 @@
 		EDB4F2302CCD7C1500A959F0 /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
-				ED0A98732CD7B9270035AAAE /* FavoritesView */,
+				ED0A98732CD7B9270035AAAE /* Favorites */,
 				ED4DE0702CD3B29000E94C24 /* MediaDetail */,
 				EDB4F2312CCD7CB400A959F0 /* Search */,
 				ED0A986E2CD7B84C0035AAAE /* TabBar */,
@@ -308,7 +314,7 @@
 				EDBBEDB02CD25F4700CD34FC /* .swiftlint.yml in Resources */,
 				EDB4F2272CCD587900A959F0 /* Preview Assets.xcassets in Resources */,
 				ED9A3D9E2CD5926E002B5F01 /* LaunchScreen.storyboard in Resources */,
-				ED6ADF802CCEC79B00B34EA4 /* Config.xcconfig in Resources */,
+				ED7769BA2CD8F538003D0FF9 /* Config.xcconfig in Resources */,
 				EDB4F2242CCD587900A959F0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,7 +368,9 @@
 				EDB4F22F2CCD7BDD00A959F0 /* Service.swift in Sources */,
 				ED4DE0792CD444B100E94C24 /* SafariView.swift in Sources */,
 				EDBBEDB42CD2CB8900CD34FC /* GenreResponseModel.swift in Sources */,
+				ED7769BC2CD8F8A5003D0FF9 /* FavoritesViewModel.swift in Sources */,
 				ED4DE0762CD3BFC800E94C24 /* MediaDetailViewModel.swift in Sources */,
+				ED7769BE2CD8FEB8003D0FF9 /* MediaListElementView.swift in Sources */,
 				EDB4F2332CCD7CC200A959F0 /* SearchViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -372,7 +380,7 @@
 /* Begin XCBuildConfiguration section */
 		EDB4F2282CCD587900A959F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ED6ADF7F2CCEC79B00B34EA4 /* Config.xcconfig */;
+			baseConfigurationReference = ED7769B92CD8F538003D0FF9 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -436,7 +444,7 @@
 		};
 		EDB4F2292CCD587900A959F0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ED6ADF7F2CCEC79B00B34EA4 /* Config.xcconfig */;
+			baseConfigurationReference = ED7769B92CD8F538003D0FF9 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -493,7 +501,7 @@
 		};
 		EDB4F22B2CCD587900A959F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ED6ADF7F2CCEC79B00B34EA4 /* Config.xcconfig */;
+			baseConfigurationReference = ED7769B92CD8F538003D0FF9 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -531,7 +539,7 @@
 		};
 		EDB4F22C2CCD587900A959F0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ED6ADF7F2CCEC79B00B34EA4 /* Config.xcconfig */;
+			baseConfigurationReference = ED7769B92CD8F538003D0FF9 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

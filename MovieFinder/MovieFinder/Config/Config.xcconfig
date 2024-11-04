@@ -1,0 +1,11 @@
+//
+//  Config.xcconfig
+//  MovieFinder
+//
+//  Created by Jean-baptiste DUBILLARD on 04/11/2024.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+API_KEY=eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiYWRlYWQxMzM1ZTNhZmNhZDE2ZGE3ZTJmYWY5NzFiZCIsIm5iZiI6MTczMDcyMzE4Ni45ODAyOTEsInN1YiI6IjY0NDNkOWYwYTA2ZWZlMDU1MmE0OTllYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.vpuXUO61-TjnLWF3MSc2BfBZfHatGWbPl5WnRsh6t1k
