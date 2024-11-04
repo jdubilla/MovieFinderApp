@@ -21,7 +21,7 @@ struct MediaDetailResponseModel: Codable {
     let posterPath: String?
     let voteAverage: Double?
     let voteCount: Int?
-    let mediaType: MediaType?
+    var mediaType: MediaType?
 
     enum CodingKeys: String, CodingKey {
         case backdropPath = "backdrop_path"

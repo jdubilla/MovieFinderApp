@@ -27,12 +27,14 @@ class FavoritesViewModel: ObservableObject {
         Task { @MainActor in
             defer { isLoading = false }
             for serie in series {
-                let response = try await TmdbManager.shared.getMediaById(mediaType: .tv, id: serie.id)
+                var response = try await TmdbManager.shared.getMediaById(mediaType: .tv, id: serie.id)
+                response.mediaType = .tv
                 responseSeries.append(response)
             }
             
             for movie in movies {
-                let response = try await TmdbManager.shared.getMediaById(mediaType: .movie, id: movie.id)
+                var response = try await TmdbManager.shared.getMediaById(mediaType: .movie, id: movie.id)
+                response.mediaType = .movie
                 responseMovies.append(response)
             }
             

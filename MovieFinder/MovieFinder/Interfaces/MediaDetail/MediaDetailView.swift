@@ -33,6 +33,7 @@ struct MediaDetailView: View {
         .background(.backgroundGray)
         .onAppear {
             vm.fetchDatas(media: media)
+            print(media)
         }
         .navigationBarBackButtonHidden()
         .sheet(isPresented: $showingSafariView) {
@@ -87,7 +88,7 @@ extension MediaDetailView {
                 RecommendationsView()
             }
             .padding(.top, 215)
-            .padding(.bottom, 32)
+            .padding(.bottom, 64)
         }
         .background {
             VStack {
@@ -281,17 +282,17 @@ extension MediaDetailView {
                     .font(.body)
                     .padding(.top)
                 
-                if let homepage = detailMedia.homepage, let urlHomePage = URL(string: homepage) {
-                    Button {
-                        url = urlHomePage
-                        showingSafariView = true
-                    } label: {
-                        Text("Voir plus")
-                            .foregroundStyle(.borderGreen)
-                            .fontWeight(.bold)
-                            .underline()
-                    }
-                }
+//                if let homepage = detailMedia.homepage, let urlHomePage = URL(string: homepage) {
+//                    Button {
+//                        url = urlHomePage
+//                        showingSafariView = true
+//                    } label: {
+//                        Text("Voir plus")
+//                            .foregroundStyle(.borderGreen)
+//                            .fontWeight(.bold)
+//                            .underline()
+//                    }
+//                }
             }
             .padding(.horizontal)
         }
@@ -312,6 +313,7 @@ extension MediaDetailView {
                     }
                 }
                 .padding(.horizontal)
+                .padding(.bottom)
             }
             .padding(.top, 24)
         }

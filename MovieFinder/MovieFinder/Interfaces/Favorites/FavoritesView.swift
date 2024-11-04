@@ -22,8 +22,8 @@ struct FavoritesView: View {
                 ProgressView()
             } else {
                 NavigationStack {
-                    VStack(spacing: 0) {
-                        ScrollView {
+                    ScrollView {
+                        VStack(spacing: 0) {
                             if !vm.favSeries.isEmpty {
                                 Text("Séries")
                                     .font(.title3)
@@ -31,10 +31,12 @@ struct FavoritesView: View {
                                     .padding(.top)
                                     .foregroundStyle(.borderGray)
                                     .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.bottom)
                                 
                                 ForEach(vm.favSeries, id: \.id) { serie in
                                     NavigationLink(destination: MediaDetailView(media: serie)) {
                                         MediaListElementView(media: serie)
+                                            .padding(.top, 8)
                                     }
                                 }
                             }
@@ -46,17 +48,19 @@ struct FavoritesView: View {
                                     .padding(.top)
                                     .foregroundStyle(.borderGray)
                                     .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.vertical)
                                 
                                 ForEach(vm.favMovies, id: \.id) { movie in
                                     NavigationLink(destination: MediaDetailView(media: movie)) {
                                         MediaListElementView(media: movie)
+                                            .padding(.top, 8)
                                     }
                                 }
                             }
                         }
+                        .padding(.horizontal)
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .padding(.horizontal)
                     .background(.backgroundGray)
                     .foregroundColor(.white)
                 }
