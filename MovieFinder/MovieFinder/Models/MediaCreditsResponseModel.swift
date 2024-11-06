@@ -5,7 +5,7 @@
 //  Created by Jean-baptiste DUBILLARD on 01/11/2024.
 //
 
-import Foundation
+import SwiftUI
 
 // MARK: - MediaCreditsResponseModel
 struct MediaCreditsResponseModel: Codable {
@@ -45,5 +45,24 @@ enum KnownForDepartment: String, Codable {
         let container = try decoder.singleValueContainer()
         let value = try? container.decode(String.self)
         self = KnownForDepartment(rawValue: value ?? "") ?? .unknown
+    }
+    
+    func localized() -> LocalizedStringKey {
+        let mapping: [String: String] = [
+            "Acting": "role_actor",
+            "Art": "role_art",
+            "Camera": "role_camera",
+            "Costume & Make-Up": "role_costume_makeup",
+            "Creator": "role_creator",
+            "Directing": "role_directing",
+            "Editing": "role_editing",
+            "Production": "role_production",
+            "Sound": "role_sound",
+            "Writing": "role_writing",
+            "Unknown": ""
+        ]
+        
+        let key = mapping[self.rawValue] ?? self.rawValue
+        return LocalizedStringKey(key)
     }
 }

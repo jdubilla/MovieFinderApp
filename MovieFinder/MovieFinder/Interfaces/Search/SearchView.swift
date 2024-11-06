@@ -25,7 +25,7 @@ struct SearchView: View {
                 }
                 
                 MTextField(
-                    placeholder: "Recherchez un film ou une série",
+                    placeholder: "search_placeholder",
                     text: $vm.text
                 )
                 .padding(.top, !vm.animateTextField ? 0 : 40)

@@ -15,9 +15,7 @@ final class MediaDetailViewModel: ObservableObject {
     @Published var recommendations: HomeImageResponseModel?
     @Published var isLoading = false
     @Published var imageOpacity: CGFloat = 0
-    
-    let baseUrlBackdropImage = "https://image.tmdb.org/t/p/original/"
-    
+        
     func fetchDatas(media: MediaDetailResponseModel) {
         fetchMediaById(media: media)
         fetchCredits(media: media)

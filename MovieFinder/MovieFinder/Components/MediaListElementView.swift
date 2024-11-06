@@ -10,7 +10,6 @@ import SwiftUI
 struct MediaListElementView: View {
     
     let media: MediaDetailResponseModel
-    let baseUrlBackdropImage = "https://image.tmdb.org/t/p/original"
     
     var body: some View {
         HStack(spacing: 0) {
@@ -35,7 +34,7 @@ extension MediaListElementView {
     @ViewBuilder
     private func MediaImageView(suggestion: MediaDetailResponseModel) -> some View {
         AsyncImage(
-            url: URL(string: baseUrlBackdropImage + (suggestion.posterPath ?? "")),
+            url: URL(string: Const.Url.imageBaseUrl + (suggestion.posterPath ?? "")),
             transaction: Transaction(animation: .default)
         ) { phase in
             switch phase {
@@ -84,7 +83,7 @@ extension MediaListElementView {
                     Image(systemName: "star.fill")
                         .foregroundColor(.yellow)
                     
-                    Text("\(String(format: "%.2f", voteAverage))")
+                    Text("\(String(format: "%.2f", voteAverage))".excludeLocalization)
                         .font(.subheadline)
                 }
                 .capsuleBackground()
@@ -123,7 +122,8 @@ extension MediaListElementView {
             numberOfSeasons: nil,
             originalName: "The Batman",
             originalTitle: "The Batman",
-            overview: "In his second year of fighting crime, Batman uncovers corruption in Gotham City that connects to his own family while facing a serial killer known as the Riddler.",
+            overview: "In his second year of fighting crime, Batman uncovers corruption in Gotham City " +
+            "that connects to his own family while facing a serial killer known as the Riddler.",
             posterPath: "/c1r23hXbH2AYFpFI8KDCq852WhG.jpg",
             voteAverage: 6.0,
             voteCount: 0,

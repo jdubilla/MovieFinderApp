@@ -51,7 +51,7 @@ extension MediaDetailView {
         VStack {
             ProgressView()
             
-            Text("Loading...")
+            Text("media_detail_loading")
         }
     }
     
@@ -98,37 +98,45 @@ extension MediaDetailView {
             }
         }
         .overlay {
-            VStack {
-                HStack {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Image(systemName: "chevron.backward")
-                    }
-                    .buttonStyle(.roundedIcon())
-                    .opacity(opacity)
-                    
-                    Spacer()
-                    
-                    Button {
-                        if itemsManager.items.contains { $0.id == media.id } {
-                            itemsManager.items.removeAll { $0.id == media.id }
-                        } else {
-                            let newItem = FavoriteMedia(id: media.id, mediaType: media.typeMedia)
-                            itemsManager.items.append(newItem)
-                            itemsManager.saveItems()
-                        }
-                    } label: {
-                        Image(systemName: FavoritesMediaManager.shared.items.contains { $0.id == media.id } ? "heart.fill" : "heart")
-                    }
-                    .buttonStyle(.roundedIcon())
-                    .opacity(opacity)
+            HeaderButtonsView()
+        }
+    }
+    
+    // MARK: HeaderButtonsView
+    @ViewBuilder
+    private func HeaderButtonsView() -> some View {
+        VStack {
+            HStack {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "chevron.backward")
                 }
-                .padding(.top, 48)
-                .padding(.horizontal, 16)
+                .buttonStyle(.roundedIcon())
+                .opacity(opacity)
                 
                 Spacer()
+                
+                Button {
+                    if itemsManager.items.contains(where: { $0.id == media.id }) {
+                        itemsManager.items.removeAll { $0.id == media.id }
+                    } else {
+                        let newItem = FavoriteMedia(id: media.id, mediaType: media.typeMedia)
+                        itemsManager.items.append(newItem)
+                        itemsManager.saveItems()
+                    }
+                } label: {
+                    Image(systemName: FavoritesMediaManager.shared.items.contains {
+                        $0.id == media.id
+                    } ? "heart.fill" : "heart")
+                }
+                .buttonStyle(.roundedIcon())
+                .opacity(opacity)
             }
+            .padding(.top, 48)
+            .padding(.horizontal, 16)
+            
+            Spacer()
         }
     }
     
@@ -137,7 +145,7 @@ extension MediaDetailView {
     private func HeaderImageView() -> some View {
         VStack {
             AsyncImage(
-                url: URL(string: vm.baseUrlBackdropImage + (vm.media?.backdropPath ?? "")),
+                url: URL(string: Const.Url.imageBaseUrl + (vm.media?.backdropPath ?? "")),
                 transaction: Transaction(animation: .default)
             ) { phase in
                 switch phase {
@@ -198,7 +206,7 @@ extension MediaDetailView {
                         }
                     }
                     
-                    Text("\(voteCount) votants")
+                    Text("media_detail_number_of_votes \(voteCount)")
                         .font(.footnote)
                         .foregroundStyle(.gray)
                 }
@@ -213,23 +221,23 @@ extension MediaDetailView {
     private func MediaInfoSummaryView(detailMedia: MediaDetailResponseModel) -> some View {
         HStack(spacing: 8) {
             if let year = detailMedia.date?.getYear() {
-                Text("\(year)")
+                Text("\(year)".excludeLocalization)
                     .foregroundStyle(.gray)
             }
             
             if let nbSeasons = detailMedia.numberOfSeasons {
-                Text("•")
+                Text("•".excludeLocalization)
                     .foregroundStyle(.gray)
                 
-                Text("\(nbSeasons) saisons")
+                Text("media_detail_number_of_seasons \(nbSeasons)")
                     .foregroundStyle(.gray)
             }
             
             if let nbEpisodes = detailMedia.numberOfEpisodes {
-                Text("•")
+                Text("•".excludeLocalization)
                     .foregroundStyle(.gray)
                 
-                Text("\(nbEpisodes) épisodes")
+                Text("media_detail_number_of_episodes \(nbEpisodes)")
                     .foregroundStyle(.gray)
             }
         }
@@ -325,7 +333,7 @@ extension MediaDetailView {
         VStack(alignment: .leading) {
             Text(cast.name)
             
-            Text(cast.knownForDepartment.rawValue)
+            Text(cast.knownForDepartment.localized())
         }
         .padding(8)
         .padding(.leading, 32)
@@ -356,7 +364,7 @@ extension MediaDetailView {
     private func CreditImageView(cast: Cast) -> some View {
         if let stringUrlImage = cast.profilePath {
             AsyncImage(
-                url: URL(string: vm.baseUrlBackdropImage + stringUrlImage),
+                url: URL(string: Const.Url.imageBaseUrl + stringUrlImage),
                 transaction: Transaction(animation: .default)
             ) { phase in
                 switch phase {
@@ -425,7 +433,7 @@ extension MediaDetailView {
     @ViewBuilder
     private func RecommendationsView() -> some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Recommandations")
+            Text("media_detail_recommendations")
                 .font(.title2)
                 .fontWeight(.bold)
                 .padding(.horizontal)
@@ -437,7 +445,7 @@ extension MediaDetailView {
                             NavigationLink(destination: MediaDetailView(media: recommendation)) {
                                 VStack(spacing: 8) {
                                     AsyncImage(
-                                        url: URL(string: vm.baseUrlBackdropImage + (recommendation.posterPath ?? "")),
+                                        url: URL(string: Const.Url.imageBaseUrl + (recommendation.posterPath ?? "")),
                                         transaction: Transaction(animation: .default)
                                     ) { phase in
                                         switch phase {
@@ -487,7 +495,8 @@ extension MediaDetailView {
             numberOfSeasons: nil,
             originalName: "The Batman",
             originalTitle: "The Batman",
-            overview: "In his second year of fighting crime, Batman uncovers corruption in Gotham City that connects to his own family while facing a serial killer known as the Riddler.",
+            overview: "In his second year of fighting crime, Batman uncovers corruption in Gotham City " +
+            "that connects to his own family while facing a serial killer known as the Riddler.",
             posterPath: "/c1r23hXbH2AYFpFI8KDCq852WhG.jpg",
             voteAverage: 6.0,
             voteCount: 0,

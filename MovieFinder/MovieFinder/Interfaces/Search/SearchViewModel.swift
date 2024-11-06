@@ -16,9 +16,7 @@ final class SearchViewModel: ObservableObject {
     @Published private var bgImagesHome: [String] = []
     @Published private var index = 0
     @Published private var searchWorkItem: DispatchWorkItem?
-    
-    let baseUrlBackdropImage = "https://image.tmdb.org/t/p/original/"
-    
+        
     func fetchData() {
         fetchHomeImage()
         fetchGenres()
@@ -30,7 +28,7 @@ final class SearchViewModel: ObservableObject {
             do {
                 bgImagesHome = try await TmdbManager.shared.getHomeImages()
                 
-                imageToShow = baseUrlBackdropImage + bgImagesHome[index]
+                imageToShow = Const.Url.imageBaseUrl + bgImagesHome[index]
             } catch {
                 print("Error")
             }
@@ -52,7 +50,7 @@ final class SearchViewModel: ObservableObject {
         guard !bgImagesHome.isEmpty else { return }
         
         incrementIndex()
-        imageToShow = baseUrlBackdropImage + bgImagesHome[index]
+        imageToShow = Const.Url.imageBaseUrl + bgImagesHome[index]
     }
     
     func mustAnimateTextField(oldValue: String, newValue: String) -> Bool {

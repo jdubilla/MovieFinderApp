@@ -10,6 +10,7 @@ import Foundation
 enum Const {
     enum Url {
         static let baseUrl = "https://api.themoviedb.org/3"
+        static let imageBaseUrl = "https://image.tmdb.org/t/p/original"
         
         static let homeImages = "\(baseUrl)/trending/all/day"
         static let suggestions = "\(baseUrl)/search/multi"

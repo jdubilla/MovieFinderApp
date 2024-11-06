@@ -36,6 +36,8 @@
 		EDBBEDB42CD2CB8900CD34FC /* GenreResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBEDB32CD2CB8900CD34FC /* GenreResponseModel.swift */; };
 		EDBBEDB62CD2D60300CD34FC /* View+CapsuleBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBEDB52CD2D60300CD34FC /* View+CapsuleBackground.swift */; };
 		EDBBEDB82CD2E90B00CD34FC /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBEDB72CD2E90B00CD34FC /* String+Date.swift */; };
+		EDE491F22CDBAE210008B4FA /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = EDE491F12CDBAE210008B4FA /* Localizable.xcstrings */; };
+		EDE491F42CDBB1240008B4FA /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE491F32CDBB1240008B4FA /* String.swift */; };
 		EDFA1FDB2CD6D92000F74553 /* Consts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFA1FDA2CD6D92000F74553 /* Consts.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +73,8 @@
 		EDBBEDB32CD2CB8900CD34FC /* GenreResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreResponseModel.swift; sourceTree = "<group>"; };
 		EDBBEDB52CD2D60300CD34FC /* View+CapsuleBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+CapsuleBackground.swift"; sourceTree = "<group>"; };
 		EDBBEDB72CD2E90B00CD34FC /* String+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
+		EDE491F12CDBAE210008B4FA /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		EDE491F32CDBB1240008B4FA /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		EDFA1FDA2CD6D92000F74553 /* Consts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,8 +145,9 @@
 			isa = PBXGroup;
 			children = (
 				ED8C1FD32CD16B890092D4C2 /* Bundle.swift */,
-				EDBBEDB52CD2D60300CD34FC /* View+CapsuleBackground.swift */,
+				EDE491F32CDBB1240008B4FA /* String.swift */,
 				EDBBEDB72CD2E90B00CD34FC /* String+Date.swift */,
+				EDBBEDB52CD2D60300CD34FC /* View+CapsuleBackground.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -177,6 +182,7 @@
 				ED6ADF7B2CCE694900B34EA4 /* Info.plist */,
 				EDB4F2302CCD7C1500A959F0 /* Interfaces */,
 				ED9A3D9D2CD5926E002B5F01 /* LaunchScreen.storyboard */,
+				EDE491F02CDBAE0E0008B4FA /* Localizable */,
 				EDB4F2342CCD7E4800A959F0 /* Managers */,
 				EDB4F2372CCD7F5500A959F0 /* Models */,
 				EDB4F21F2CCD587700A959F0 /* MovieFinderApp.swift */,
@@ -243,6 +249,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		EDE491F02CDBAE0E0008B4FA /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				EDE491F12CDBAE210008B4FA /* Localizable.xcstrings */,
+			);
+			path = Localizable;
+			sourceTree = "<group>";
+		};
 		EDFA1FD92CD6D8BC00F74553 /* Consts */ = {
 			isa = PBXGroup;
 			children = (
@@ -294,6 +308,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = EDB4F2132CCD587700A959F0;
 			productRefGroup = EDB4F21D2CCD587700A959F0 /* Products */;
@@ -315,6 +330,7 @@
 				EDB4F2272CCD587900A959F0 /* Preview Assets.xcassets in Resources */,
 				ED9A3D9E2CD5926E002B5F01 /* LaunchScreen.storyboard in Resources */,
 				ED7769BA2CD8F538003D0FF9 /* Config.xcconfig in Resources */,
+				EDE491F22CDBAE210008B4FA /* Localizable.xcstrings in Resources */,
 				EDB4F2242CCD587900A959F0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -365,6 +381,7 @@
 				EDB4F2362CCD7E6B00A959F0 /* TmdbManager.swift in Sources */,
 				EDB4F2202CCD587700A959F0 /* MovieFinderApp.swift in Sources */,
 				ED6ADF7A2CCE671900B34EA4 /* ButtonStyles.swift in Sources */,
+				EDE491F42CDBB1240008B4FA /* String.swift in Sources */,
 				EDB4F22F2CCD7BDD00A959F0 /* Service.swift in Sources */,
 				ED4DE0792CD444B100E94C24 /* SafariView.swift in Sources */,
 				EDBBEDB42CD2CB8900CD34FC /* GenreResponseModel.swift in Sources */,
@@ -438,6 +455,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -495,6 +513,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

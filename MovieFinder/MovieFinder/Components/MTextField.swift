@@ -9,12 +9,12 @@ import SwiftUI
 
 struct MTextField: View {
     
-    let placeholder: String
+    let placeholder: LocalizedStringKey
     @Binding var text: String
     
     var body: some View {
         TextField(
-            "",
+            "".excludeLocalization,
             text: $text,
             prompt: Text(placeholder).foregroundColor(.gray)
         )

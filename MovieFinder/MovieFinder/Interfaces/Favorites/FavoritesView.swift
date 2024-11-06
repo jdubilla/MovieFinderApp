@@ -15,7 +15,7 @@ struct FavoritesView: View {
     var body: some View {
         VStack(spacing: 0) {
             if itemsManager.items.isEmpty {
-                Text("Aucun favoris")
+                Text("favorites_no_favorites")
                     .font(.title)
                     .foregroundColor(.gray)
             } else if vm.isLoading {
@@ -25,7 +25,7 @@ struct FavoritesView: View {
                     ScrollView {
                         VStack(spacing: 0) {
                             if !vm.favSeries.isEmpty {
-                                Text("Séries")
+                                Text("favorites_series")
                                     .font(.title3)
                                     .fontWeight(.bold)
                                     .padding(.top)
@@ -42,7 +42,7 @@ struct FavoritesView: View {
                             }
                             
                             if !vm.favMovies.isEmpty {
-                                Text("Films")
+                                Text("favorites_movies")
                                     .font(.title3)
                                     .fontWeight(.bold)
                                     .padding(.top)

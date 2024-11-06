@@ -11,7 +11,6 @@ struct CapsuleBackground: ViewModifier {
     func body(content: Content) -> some View {
         content
             .padding(8)
-//            .background(.backgroundGray)
             .background(.backgroundGrayBis)
             .clipShape(Capsule())
     }

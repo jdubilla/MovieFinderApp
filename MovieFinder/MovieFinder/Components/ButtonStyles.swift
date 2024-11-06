@@ -38,7 +38,7 @@ struct GradientBorderButtonStyle: ButtonStyle {
 @available(iOS 17, *)
 #Preview("Icon buttons", traits: .sizeThatFitsLayout) {
     VStack {
-        Button("Enter now") {
+        Button("Enter now".excludeLocalization) {
             
         }
         .buttonStyle(GradientBorderButtonStyle())

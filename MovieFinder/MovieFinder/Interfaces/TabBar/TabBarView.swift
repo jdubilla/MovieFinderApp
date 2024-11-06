@@ -13,7 +13,7 @@ struct TabBarView: View {
             SearchView()
                 .tabItem {
                     Label(
-                        "Recherche",
+                        "tab_search",
                         systemImage: "magnifyingglass"
                     )
                 }
@@ -21,7 +21,7 @@ struct TabBarView: View {
             FavoritesView()
                 .tabItem {
                     Label(
-                        "Favoris",
+                        "tab_favorites",
                         systemImage: "star"
                     )
                 }
