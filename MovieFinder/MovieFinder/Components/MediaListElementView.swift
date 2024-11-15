@@ -13,12 +13,12 @@ struct MediaListElementView: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            MediaImageView(suggestion: media)
+            MediaImageView(mediaDetail: media)
             
             VStack(alignment: .leading, spacing: 4) {
-                MediaNameAndGenreView(suggestion: media)
+                MediaNameAndGenreView(mediaDetail: media)
                 
-                MediaVoteAverageAndYearView(suggestion: media)
+                MediaVoteAverageAndYearView(mediaDetail: media)
                 
                 Spacer()
             }
@@ -32,9 +32,9 @@ struct MediaListElementView: View {
 extension MediaListElementView {
     // MARK: MediaImageView
     @ViewBuilder
-    private func MediaImageView(suggestion: MediaDetailResponseModel) -> some View {
+    private func MediaImageView(mediaDetail: MediaDetailResponseModel) -> some View {
         AsyncImage(
-            url: URL(string: Const.Url.imageBaseUrl + (suggestion.posterPath ?? "")),
+            url: URL(string: Const.Url.imageBaseUrl + (mediaDetail.posterPath ?? "")),
             transaction: Transaction(animation: .default)
         ) { phase in
             switch phase {
@@ -55,16 +55,16 @@ extension MediaListElementView {
     
     // MARK: MediaNameAndGenreView
     @ViewBuilder
-    private func MediaNameAndGenreView(suggestion: MediaDetailResponseModel) -> some View {
-        Text(suggestion.nameOrTitle)
+    private func MediaNameAndGenreView(mediaDetail: MediaDetailResponseModel) -> some View {
+        Text(mediaDetail.nameOrTitle)
             .font(.headline)
             .fontWeight(.bold)
             .padding(.leading)
             .multilineTextAlignment(.leading)
         
         HStack(spacing: 4) {
-            ForEach((suggestion.genreIds?.prefix(2).map { TmdbManager.shared.getGenreNameById(idGenre: $0) }
-                     ?? suggestion.genres?.prefix(2).map { $0.name }) ?? [], id: \.self) { genreName in
+            ForEach((mediaDetail.genreIds?.prefix(2).map { TmdbManager.shared.getGenreNameById(idGenre: $0) }
+                     ?? mediaDetail.genres?.prefix(2).map { $0.name }) ?? [], id: \.self) { genreName in
                 Text(genreName)
                     .font(.subheadline)
                     .lineLimit(1)
@@ -76,9 +76,9 @@ extension MediaListElementView {
     
     // MARK: MediaVoteAverageAndYearView
     @ViewBuilder
-    private func MediaVoteAverageAndYearView(suggestion: MediaDetailResponseModel) -> some View {
+    private func MediaVoteAverageAndYearView(mediaDetail: MediaDetailResponseModel) -> some View {
         HStack(spacing: 8) {
-            if let voteAverage = suggestion.voteAverage {
+            if let voteAverage = mediaDetail.voteAverage {
                 HStack(spacing: 8) {
                     Image(systemName: "star.fill")
                         .foregroundColor(.yellow)
@@ -90,7 +90,7 @@ extension MediaListElementView {
                 .padding(.leading)
             }
             
-            if let year = suggestion.date?.getYear() {
+            if let year = mediaDetail.date?.getYear() {
                 HStack(spacing: 8) {
                     Image(systemName: "calendar")
                     
