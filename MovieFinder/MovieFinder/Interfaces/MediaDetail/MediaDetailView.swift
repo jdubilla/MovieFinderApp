@@ -322,8 +322,8 @@ extension MediaDetailView {
                 }
                 .padding(.horizontal)
                 .padding(.bottom)
+                .padding(.top, 24)
             }
-            .padding(.top, 24)
         }
     }
     
@@ -490,7 +490,7 @@ extension MediaDetailView {
             genres: [],
             genreIds: [99],
             homepage: nil,
-            id: 211684,
+            id: 71446,
             numberOfEpisodes: nil,
             numberOfSeasons: nil,
             originalName: "The Batman",
